@@ -1,0 +1,54 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    image: ai-website-cloner:latest
+    container_name: ai-website-cloner
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    env_file:
+      - path: .env.local
+        required: false
+      - path: .env
+        required: false
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://127.0.0.1:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: ai-website-cloner:dev
+    container_name: ai-website-cloner-dev
+    restart: unless-stopped
+    ports:
+      - "${DEV_PORT:-3001}:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    env_file:
+      - path: .env.local
+        required: false
+      - path: .env
+        required: false
+    volumes:
+      - .:/app
+      - /app/node_modules
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://127.0.0.1:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

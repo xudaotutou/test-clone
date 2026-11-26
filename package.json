@@ -1,0 +1,81 @@
+{
+  "name": "ai-website-cloner-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "用 AI 将网站反编译为 Hono + htmx 4 + Alpine + Tailwind v4 的干净模板",
+  "author": "JCodesMore",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JCodesMore/ai-website-cloner-template.git"
+  },
+  "homepage": "https://github.com/JCodesMore/ai-website-cloner-template",
+  "bugs": {
+    "url": "https://github.com/JCodesMore/ai-website-cloner-template/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "website-clone",
+    "reverse-engineering",
+    "hono",
+    "htmx",
+    "alpinejs",
+    "tailwindcss",
+    "ai"
+  ],
+  "engines": {
+    "bun": ">=1.4.5"
+  },
+  "packageManager": "bun@1.4.5",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun run build:css",
+    "build:css": "bunx tailwindcss -i ./src/styles/app.css -o ./public/static/app.css --minify && bun scripts/asset-hash.mjs",
+    "assets:hash": "bun scripts/asset-hash.mjs",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "bun check --no-script",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "snapshot": "bun scripts/snapshot.mjs",
+    "batch": "bun scripts/batch.mjs",
+    "smoke": "bun scripts/smoke.mjs",
+    "routes": "bun scripts/hono-cli.mjs routes src/app-bun.ts",
+    "check:docs": "bun scripts/check-docs.mjs",
+    "check:skills": "bun scripts/check-skills.mjs",
+    "ci": "bun scripts/ci.mjs",
+    "check": "bun run ci",
+    "migrate": "bun scripts/migrate.mjs up",
+    "migrate:status": "bun scripts/migrate.mjs status",
+    "migrate:down": "bun scripts/migrate.mjs down",
+    "typegen": "bun scripts/typegen.mjs",
+    "secret:gen": "bun scripts/gen-secret.mjs",
+    "bundle:worker": "bun scripts/asset-hash.mjs && wrangler deploy --dry-run --outdir .dryrun",
+    "deploy:worker": "bun scripts/asset-hash.mjs && wrangler deploy",
+    "jj:setup": "bun scripts/jj-setup.mjs"
+  },
+  "dependencies": {
+    "hono": "4.13.19",
+    "iron-session": "9.1.0",
+    "kysely": "0.29.9",
+    "pg": "8.23.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.17",
+    "@eslint/js": "10.0.1",
+    "@hono/cli": "1.0.0-rc.9",
+    "@tailwindcss/cli": "4.1.16",
+    "@types/bun": "1.4.5",
+    "@types/pg": "8.23.1",
+    "basecoat-css": "1.2.1",
+    "eslint": "10.15.0",
+    "happy-dom": "21.0.4",
+    "tailwindcss": "4.1.16",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.74.0",
+    "wrangler": "^4.166.0"
+  }
+}

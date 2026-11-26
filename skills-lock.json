@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "skills": {
+    "hono": {
+      "source": "honojs/skills",
+      "commit": "e54ce51f6effaeb574ebd2629e89e086e14a2db3",
+      "sourceType": "github",
+      "skillPath": "skills/hono/SKILL.md",
+      "computedHash": "bd09f39234ff6004b44788991b1208027b2ae132a6cc306a58d7cca087fb8c6c",
+      "treeHash": "fc8c5721d683a91a6f46dbef4ed1d14af6cffc8cc0af67f788c3a1ba5d4410e5"
+    },
+    "tailwindcss": {
+      "source": "hairyf/skills",
+      "commit": "ffa1f904012f48f5bdf34ebb692daa09c778d47f",
+      "sourceType": "github",
+      "skillPath": "skills/tailwindcss/SKILL.md",
+      "computedHash": "c2fa19b055945dc89ee0cbf154138f680237fd6d7d3263cbf0977f9e4def1eeb",
+      "treeHash": "d7fa8d9944016aed1e5c72de4350e34b7018fd4a316c5214bf3a102ffc40d502"
+    }
+  }
+}

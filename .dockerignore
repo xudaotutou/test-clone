@@ -1,0 +1,52 @@
+# Dependencies (reinstalled inside Docker)
+node_modules
+
+# Build and dry-run output
+.dryrun
+.wrangler
+.smoke.json
+dist
+build
+
+# Git / jj
+.git
+.jj
+.gitignore
+.gitattributes
+
+# Environment files (pass via docker-compose env_file or runtime env vars)
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Agent / AI tool configs (not needed at runtime)
+.agents
+.claude
+.cursor
+.opencode
+AGENTS.md
+CLAUDE.md
+
+# Docs and tests (not needed in the runtime image)
+docs
+tests
+README.md
+CHANGELOG.md
+LICENSE
+
+# Docker files themselves
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+.dockerignore
+
+# Misc
+*.tsbuildinfo

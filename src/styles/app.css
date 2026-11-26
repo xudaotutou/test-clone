@@ -1,0 +1,105 @@
+/*
+ * Tailwind v4 样式源文件。
+ *
+ * 编译产物 public/static/app.css 必须入库：
+ *   bun run build:css
+ *
+ * `source(none)` 关闭自动扫描，避免 tests/baseline.jsonl 里的完整 HTML
+ * 反过来影响 CSS 哈希，形成“改基线 → CSS 变 → 基线变”的循环。
+ */
+
+@import 'tailwindcss' source(none);
+
+/* Basecoat 只用 CSS 源码。组件结构 + vega 外观层缺一不可。 */
+@import 'basecoat-css/base/base.css';
+@import 'basecoat-css/components/button.css';
+@import 'basecoat-css/components/card.css';
+@import 'basecoat-css/components/alert.css';
+@import 'basecoat-css/components/badge.css';
+@import 'basecoat-css/components/input.css';
+@import 'basecoat-css/components/label.css';
+@import 'basecoat-css/components/field.css';
+@import 'basecoat-css/styles/vega.css';
+
+/* 站点覆盖必须排在 Basecoat 之后。 */
+@import './sites/starter.css';
+
+@source '../**/*.ts';
+@source '../../islands/**/*.js';
+
+/*
+ * Geist — 自托管。OFL-1.1 许可文件随字体入库。
+ *
+ * 文件名带内容哈希；`/static/*` 是 immutable，换字体必须换文件名。
+ */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/static/fonts/geist-latin-wght-normal-19f9c925.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/static/fonts/geist-latin-ext-wght-normal-824f485b.woff2') format('woff2-variations');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@theme {
+  --font-sans:
+    'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-brand-50: oklch(0.97 0.014 254);
+  --color-brand-100: oklch(0.93 0.032 254);
+  --color-brand-500: oklch(0.62 0.19 254);
+  --color-brand-600: oklch(0.55 0.2 254);
+  --color-brand-700: oklch(0.48 0.18 254);
+}
+
+:root {
+  --radius: 0.75rem;
+  --primary: oklch(0.55 0.2 254);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.62 0.19 254);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 18% 0%, oklch(0.96 0.03 254 / 70%), transparent 36rem),
+      radial-gradient(circle at 96% 12%, oklch(0.97 0.025 200 / 55%), transparent 30rem),
+      var(--background);
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .htmx-request {
+    opacity: 0.62;
+    pointer-events: none;
+  }
+
+  .field > .field-error,
+  .field-error {
+    @apply text-sm text-destructive;
+  }
+}

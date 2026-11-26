@@ -1,0 +1,263 @@
+/* Starter 站点专属样式。真实克隆时按 src/sites/<site>/ 建同名文件。 */
+
+@layer components {
+  .starter-page {
+    @apply flex min-h-screen flex-col;
+  }
+
+  .starter-nav {
+    @apply mx-auto flex w-full max-w-6xl flex-wrap items-center gap-4 px-5 py-5 sm:px-8;
+  }
+
+  .starter-brand {
+    @apply mr-auto inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground;
+  }
+
+  .starter-mark {
+    @apply size-8 text-primary;
+  }
+
+  .starter-nav-links {
+    @apply flex flex-wrap items-center gap-1 text-sm text-muted-foreground;
+  }
+
+  .starter-nav-links > a:not(.btn) {
+    @apply rounded-md px-2.5 py-1.5 transition-colors hover:bg-muted hover:text-foreground;
+  }
+
+  .starter-main {
+    @apply mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 pb-20 sm:px-8;
+  }
+
+  .starter-hero {
+    @apply grid items-center gap-8 border-y py-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:gap-14 lg:py-20;
+  }
+
+  .starter-hero-copy {
+    @apply flex flex-col items-start gap-6;
+  }
+
+  .starter-eyebrow {
+    @apply flex flex-wrap items-center gap-3 text-xs font-medium tracking-wide text-muted-foreground;
+  }
+
+  .starter-title {
+    @apply max-w-3xl text-5xl leading-[0.96] font-semibold tracking-[-0.055em] text-foreground sm:text-6xl lg:text-7xl;
+  }
+
+  .starter-title-soft {
+    @apply block text-muted-foreground;
+  }
+
+  .starter-lede {
+    @apply max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg;
+  }
+
+  .starter-command {
+    @apply flex w-full max-w-xl items-center gap-2 rounded-xl border bg-foreground px-3 py-2 text-primary-foreground shadow-sm;
+  }
+
+  .starter-command code {
+    @apply min-w-0 flex-1 overflow-x-auto px-2 py-1 font-mono text-xs whitespace-nowrap sm:text-sm;
+  }
+
+  .starter-command .btn {
+    @apply border-white/15 text-primary-foreground hover:bg-white/10 hover:text-primary-foreground;
+  }
+
+  .starter-actions {
+    @apply flex flex-wrap gap-3;
+  }
+
+  .starter-status-card {
+    @apply relative flex flex-col gap-5 overflow-hidden rounded-2xl border bg-card p-6 shadow-sm;
+  }
+
+  .starter-status-card::after {
+    content: '';
+    position: absolute;
+    inset: auto -3rem -5rem auto;
+    width: 11rem;
+    height: 11rem;
+    border-radius: 9999px;
+    background: oklch(0.62 0.19 254 / 12%);
+    filter: blur(8px);
+    pointer-events: none;
+  }
+
+  .starter-status-head {
+    @apply flex items-center justify-between text-[0.68rem] font-semibold tracking-[0.18em] text-muted-foreground;
+  }
+
+  .starter-status-dot {
+    @apply size-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_oklch(0.72_0.16_154_/_14%)];
+  }
+
+  .starter-status-card p {
+    @apply text-sm leading-6 text-muted-foreground;
+  }
+
+  .starter-fragment-slot {
+    @apply min-h-12 rounded-lg border border-dashed bg-muted/40 px-3 py-2.5 text-sm text-muted-foreground;
+  }
+
+  .starter-check-result {
+    @apply flex items-start gap-3 text-foreground;
+  }
+
+  .starter-check-icon {
+    @apply mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-700;
+  }
+
+  .starter-check-result div {
+    @apply flex flex-col gap-0.5;
+  }
+
+  .starter-check-result strong {
+    @apply text-sm font-semibold;
+  }
+
+  .starter-check-result div span {
+    @apply text-xs leading-5 text-muted-foreground;
+  }
+
+  .starter-section {
+    @apply border-b py-14 lg:py-18;
+  }
+
+  .starter-section-head {
+    @apply mb-8 flex flex-col gap-2;
+  }
+
+  .starter-kicker {
+    @apply text-[0.68rem] font-semibold tracking-[0.2em] text-primary;
+  }
+
+  .starter-section h2 {
+    @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+  }
+
+  .starter-grid {
+    @apply grid gap-4 md:grid-cols-3;
+  }
+
+  .starter-card {
+    @apply gap-3 border p-5 shadow-none transition-transform duration-200 hover:-translate-y-0.5;
+  }
+
+  .starter-card-index {
+    @apply font-mono text-xs text-primary;
+  }
+
+  .starter-card h3 {
+    @apply text-base font-semibold;
+  }
+
+  .starter-card p {
+    @apply text-sm leading-6 text-muted-foreground;
+  }
+
+  .starter-disclosure {
+    @apply mt-5 rounded-xl border bg-card/70;
+  }
+
+  .starter-disclosure-trigger {
+    @apply flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold;
+  }
+
+  .starter-disclosure-icon {
+    @apply text-lg leading-none text-muted-foreground transition-transform;
+  }
+
+  .starter-disclosure-panel {
+    @apply border-t px-5 py-4 text-sm leading-6 text-muted-foreground;
+  }
+
+  .starter-steps {
+    @apply grid gap-px overflow-hidden rounded-xl border bg-border md:grid-cols-4;
+  }
+
+  .starter-step {
+    @apply flex gap-4 bg-background p-5;
+  }
+
+  .starter-step-number {
+    @apply font-mono text-xs text-primary;
+  }
+
+  .starter-step h3 {
+    @apply text-sm font-semibold;
+  }
+
+  .starter-step p {
+    @apply mt-2 text-xs leading-5 text-muted-foreground;
+  }
+
+  .starter-demo {
+    @apply max-w-3xl pt-10 sm:pt-16;
+  }
+
+  .starter-demo-head {
+    @apply flex flex-col gap-3 pb-8;
+  }
+
+  .starter-demo-head h1 {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
+
+  .starter-demo-head > p:last-child {
+    @apply max-w-2xl text-sm leading-6 text-muted-foreground;
+  }
+
+  .starter-demo-form {
+    @apply gap-5 p-5 sm:p-7;
+  }
+
+  .starter-form-actions {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .starter-echo-result {
+    @apply flex flex-col gap-1;
+  }
+
+  .starter-echo-result span {
+    @apply text-sm;
+  }
+
+  .starter-note {
+    @apply mt-5 flex flex-col gap-1;
+  }
+
+  .starter-note span {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .starter-footer {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-1 border-t px-5 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8;
+  }
+
+  .starter-footer-note {
+    @apply text-muted-foreground/75;
+  }
+
+  @media (max-width: 640px) {
+    .starter-nav {
+      @apply gap-3 py-4;
+    }
+
+    .starter-nav-links > a:not(.btn):nth-child(-n + 2) {
+      @apply hidden;
+    }
+
+    .starter-title {
+      @apply text-[2.75rem];
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .starter-card {
+      @apply transition-none;
+    }
+  }
+}
